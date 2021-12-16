@@ -20,7 +20,6 @@ function print_repo_details(){
     echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
 }
 
-
 echo -e "${BOLD}${UNDERLINE}\nSBOM Generator & Vulnerability Scanner - v1.0${NC}\n"
 print_repo_details
 echo -e "1. Generating Software Bill of Materials(SBOM) for the Project"
