@@ -14,12 +14,14 @@ function raise_error(){
   exit 1
 }
 
+# print git repository link. Exit if not git repository directory
 function print_repo_details(){
-    if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    if git tag > /dev/null 2>&1; then
         repo_name=$(git ls-remote --get-url)
         echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
     else
         raise_error "Not a Git Repository. Exiting...\n"
+        # echo "Not a Git Repository. Exiting...\n"
     fi
 }
 
