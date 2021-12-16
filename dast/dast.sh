@@ -8,7 +8,14 @@ GREEN=$'\e[32m'
 BLUE=$'\e[34m'
 ORANGE=$'\x1B[33m'
 
+# raise error
+function raise_error(){
+  echo -e "${BOLD}${RED}${1}${NC}" >&2
+  exit 1
+}
+
 host=$1
+[ -z $host ] || raise_error "Host parameter Missing"
 host_ip="$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}')"
 
 sed 1d headers-large.txt | while IFS= read -r header
