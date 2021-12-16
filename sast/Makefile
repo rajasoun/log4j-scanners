@@ -1,6 +1,6 @@
 CONTEXT="."
 VERSION="1.0"
-IMAGE_NAME=rajasoun/sbom-shell:$(VERSION)
+IMAGE_NAME=rajasoun/sast:$(VERSION)
 
 # HELP
 # This will output the help for each task
