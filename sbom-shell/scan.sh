@@ -16,9 +16,14 @@ function raise_error(){
 
 # print git repository link. Exit if not git repository directory
 function print_repo_details(){
-    repo_name=$(git ls-remote --get-url)
-    echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
+    if git tag > /dev/null 2>&1; then
+        repo_name=$(git ls-remote --get-url)
+        echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
+    else
+        echo -e "${BOLD}${ORANGE}Not a Git Repository. ${NC}\n"
+    fi
 }
+
 
 echo -e "${BOLD}${UNDERLINE}\nSBOM Generator & Vulnerability Scanner - v1.0${NC}\n"
 print_repo_details
