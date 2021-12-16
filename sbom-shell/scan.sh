@@ -19,7 +19,7 @@ function print_repo_details(){
         repo_name=$(git ls-remote --get-url)
         echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
     else
-        raise_error "Not a Git Repository. Exiting..."
+        raise_error "Not a Git Repository. Exiting...\n"
     fi
 }
 
