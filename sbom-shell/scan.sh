@@ -20,7 +20,7 @@ function print_repo_details(){
         repo_name=$(git ls-remote --get-url)
         echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
     else
-        echo -e "${BOLD}${ORANGE}Not a Git Repository. ${NC}\n"
+        echo -e "${BOLD}${RED}Not a Git Repository. ${NC}\n"
     fi
 }
 
