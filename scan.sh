@@ -96,6 +96,7 @@ function main(){
   case $choice in
     sast) sast  "$@" ;;
     sbom-scan) sbom_scan  "$@" ;;
+    dast) dast/dast.sh "$@" ;;
     *)  help ;;
   esac
 }

