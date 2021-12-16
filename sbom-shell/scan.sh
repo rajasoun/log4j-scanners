@@ -14,10 +14,18 @@ function raise_error(){
   exit 1
 }
 
-echo -e "${BOLD}${UNDERLINE}SBOM Generator & Vulnerability Scanner - v1.0${NC}\n"
-[ $(git rev-parse --is-inside-work-tree) ] || raise_eeror "Not a Git Repository"
-repo_name=$(git ls-remote --get-url)
-echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
+function print_repo_details(){
+    if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        repo_name=$(git ls-remote --get-url)
+        echo -e "${BOLD}${ORANGE}Git Repository : ${NC}$repo_name\n"
+    else
+        raise_error "Not a Git Repository. Exiting..."
+    fi
+}
+
+
+echo -e "${BOLD}${UNDERLINE}\nSBOM Generator & Vulnerability Scanner - v1.0${NC}\n"
+print_repo_details
 echo -e "1. Generating Software Bill of Materials(SBOM) for the Project"
 syft packages . -o json > sbom.json
 echo -e "2. Scanning Software Bill of Materials(SBOM) for All Vulnerabilities/n"
