@@ -3,8 +3,8 @@ FROM shiftleft/scan
 # Defining default non-root user UID, GID, and name 
 ARG USER_UID="1000"
 ARG USER_GID="1000"
-ARG USER_NAME="sbom-shell"
-ENV HOSTNAME="ci-shell"
+ARG USER_NAME="sast-shell"
+ENV HOSTNAME="sast-shell"
 
 ENV TZ="Asia/Kolkata"
 ENV HOME="/home/$USER_NAME"
