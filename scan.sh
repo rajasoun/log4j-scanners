@@ -54,7 +54,7 @@ function sast(){
   [ -z "$base_dir" ] && raise_error "Directory to scan is missing"
   if [[ -t 0 ]]; then IT+=(-i); fi
   if [[ -t 1 ]]; then IT+=(-t); fi
-  _docker run --rm "${IT[@]}" -e "WORKSPACE=${base_dir}" -v $base_dir:/app shiftleft/scan scan --build
+  _docker run --rm "${IT[@]}" -e "WORKSPACE=${base_dir}" -v $base_dir:/app rajasoun/sast:1.0 scan --build
 
 }
 
