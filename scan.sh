@@ -100,7 +100,7 @@ function dast() {
 
 # help 
 function help(){
-  echo -e "${RED}Usage: $0  { sbom-scan | sast } ${NC}" >&2
+  echo -e "${RED}Usage: $0  { sbom-scan | sast | dast } ${NC}" >&2
   echo
   echo "   ${ORANGE}sbom-scan <dir> -> Software Bill of Material (SBOM) Scanner ${NC}"
   echo "   ${ORANGE}sast      <dir> -> Satic Application Security Test ${NC}"
