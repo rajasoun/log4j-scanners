@@ -12,4 +12,5 @@ Usage: ./scan.sh  { sbom-scan | sast }
 
    sbom-scan <dir> -> Software Bill of Material (SBOM) Scanner 
    sast      <dir> -> Satic Application Security Test 
+   dast     <host> -> Dynamic Application Security Test 
 ```

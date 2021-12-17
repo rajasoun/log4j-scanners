@@ -104,7 +104,7 @@ function help(){
   echo
   echo "   ${ORANGE}sbom-scan <dir> -> Software Bill of Material (SBOM) Scanner ${NC}"
   echo "   ${ORANGE}sast      <dir> -> Satic Application Security Test ${NC}"
-  echo "   ${ORANGE}dast            -> Dynamic Application Security Test ${NC}"
+  echo "   ${ORANGE}dast     <host> -> Dynamic Application Security Test ${NC}"
   echo
   return 1
 }
