@@ -14,3 +14,16 @@ Usage: ./scan.sh  { sbom-scan | sast }
    sast      <dir> -> Satic Application Security Test 
    dast     <host> -> Dynamic Application Security Test 
 ```
+
+or 
+
+Execute teh script from github
+
+```
+curl -Ls https://raw.githubusercontent.com/rajasoun/log4j-scanners/main/scan.sh | bash
+Usage: bash  { sbom-scan | sast | dast } 
+
+   sbom-scan <dir> -> Software Bill of Material (SBOM) Scanner 
+   sast      <dir> -> Satic Application Security Test 
+   dast     <host> -> Dynamic Application Security Test 
+```
